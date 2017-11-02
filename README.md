@@ -2,6 +2,9 @@
 
 ## [Grunt Boilerplate](https://github.com/SaliMike/boilerplate-grunt)
 ### Usage
-	npm run dev // "dev": "webpack-dev-server --progress --colors",
-	npm run prod // "prod": "set NODE_ENV=production&& webpack -p",
-	npm run clean // "clean": "rimraf dist"
+	    npm run installAll // "installAll": "npm install",
+	    npm run installDev // "installDev": "npm install --only=dev",
+	    npm run installProd // "installProd": "npm install --only=production",
+	    npm run default // "default": "grunt default",
+	    npm run build // "build": "grunt build",
+	    npm run server // "server": "grunt server"
