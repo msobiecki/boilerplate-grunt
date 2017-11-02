@@ -1,4 +1,4 @@
-<img src="https://rawgit.com/gorangajic/react-icons/master/react-icons.svg" width="60" alt="React Boilerplate">
+<img src="https://cdn.worldvectorlogo.com/logos/grunt.svg" width="128" alt="Grunt Boilerplate">
 
 ## [Grunt Boilerplate](https://github.com/SaliMike/boilerplate-grunt)
 ### Usage
