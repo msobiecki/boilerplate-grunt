@@ -1,1 +1,26 @@
 @charset 'UTF-8'
+
+=clearfix
+  &::before,
+  &::after
+    display: table
+    content: ' '
+
+  &::after
+    clear: both
+
+=min($min-width)
+  @media (min-width: $min-width)
+    @content
+
+=max($max-width)
+  @media (max-width: $max-width)
+    @content
+
+=portrait
+  @media all and (orientation: portrait)
+    @content
+
+=landscape
+  @media all and (orientation: landscape)
+    @content
