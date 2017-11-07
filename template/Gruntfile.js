@@ -47,19 +47,20 @@ module.exports = function (grunt) {
       }
     },
 
-    mochaTest: {
-      test: {
-        options: {
-          reporter: 'spec',
-          quiet: false,
-          clearRequireCache: false,
-          clearCacheFilter: (key) => true,
-          noFail: false,
-          ui: 'tdd',
-          require: 'babel-register'
-        },
-        src: ['test/**/*.js']
-      }
+    mocha: {
+      options: {
+        run: true,
+        log: true,
+        logErrors: true,
+        reporter: 'spec',
+        quiet: false,
+        clearRequireCache: false,
+        clearCacheFilter: (key) => true,
+        noFail: false,
+        ui: 'tdd',
+        require: 'babel-register'
+      },
+      src: ['test/**/*.html']
     },
 
     sass: {
