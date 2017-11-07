@@ -214,4 +214,5 @@ module.exports = function (grunt) {
   grunt.registerTask('prod', ['concurrent:prod']);
   grunt.registerTask('build', ['concurrent:build']);
   grunt.registerTask('optimal', ['concurrent:optimal']);
+  grunt.registerTask('test', ['mocha']);
 };

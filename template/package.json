@@ -9,7 +9,8 @@
     "installProd": "npm install --only=production",
     "prod": "grunt prod",
     "build": "grunt build",
-    "dev": "grunt dev"
+    "dev": "grunt dev",
+    "test": "grunt test"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.6",
