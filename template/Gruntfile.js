@@ -178,10 +178,10 @@ module.exports = function (grunt) {
       options: {
         logConcurrentOutput: true
       },
-      front: {
+      dev: {
         tasks: ['watch:scripts', 'watch:sass', 'watch:pug', 'watch:reload', 'connect']
       },
-      dev: {
+      prod: {
         tasks: ['watch:scripts', 'watch:sass']
       },
       build: {
