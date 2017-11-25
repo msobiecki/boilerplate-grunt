@@ -14,7 +14,7 @@ rules:
 
   # Line Spacing
   one-declaration-per-line: 1
-  empty-line-between-blocks: 1
+  empty-line-between-blocks: 0
   single-line-per-selector: 0
 
   # Disallows
@@ -90,7 +90,7 @@ rules:
   pseudo-element: 1
   quotes:
     - 1
-    - style: single
+    - style: double
   shorthand-values: 1
   url-quotes: 1
   variable-for-property: 1

@@ -7,7 +7,7 @@ module.exports = function (grunt) {
     uglify: {
       dist: {
         files: {
-          'scripts/main.min.js': 'scripts/main.min.js'
+          'assets/scripts/main.min.js': 'assets/scripts/main.min.js'
         },
         output: {
           comments: false
@@ -17,7 +17,7 @@ module.exports = function (grunt) {
     browserify: {
       dev: {
         files: {
-          'scripts/main.min.js': ['source/**/*.js']
+          'assets/scripts/main.min.js': ['source/main.js']
         },
         options: {
           transform: [
@@ -32,7 +32,7 @@ module.exports = function (grunt) {
       },
       dist: {
         files: {
-          'scripts/main.min.js': ['source/**/*.js']
+          'assets/scripts/main.min.js': ['source/main.js']
         },
         options: {
           transform: [
@@ -74,7 +74,7 @@ module.exports = function (grunt) {
           expand: true,
           cwd: 'source',
           src: ['*.sass'],
-          dest: 'css',
+          dest: 'assets/styles',
           ext: '.css'
         }]
       },
@@ -88,8 +88,8 @@ module.exports = function (grunt) {
           expand: true,
           cwd: 'source',
           src: ['*.sass'],
-          dest: 'css',
-          ext: '.css'
+          dest: 'assets/styles',
+          ext: '.min.css'
         }]
       },
     },
@@ -104,8 +104,8 @@ module.exports = function (grunt) {
           ]
         },
         dist: {
-          src: 'css/main.min.css',
-          dest: 'css/main.min.css'
+          src: 'assets/styles/main.min.css',
+          dest: 'assets/styles/main.min.css'
         }
       },
       dist: {
@@ -118,8 +118,8 @@ module.exports = function (grunt) {
           ]
         },
         dist: {
-          src: 'css/main.min.css',
-          dest: 'css/main.min.css'
+          src: 'assets/styles/main.min.css',
+          dest: 'assets/styles/main.min.css'
         }
       }
     },
@@ -142,14 +142,16 @@ module.exports = function (grunt) {
       }
     },
 
-    connect: {
-      all: {
-        options: {
-          port: 9000,
-          hostname: "0.0.0.0",
-          keepalive: true,
-          livereload: true
-        }
+    browserSync: {
+      bsFiles: {
+        src: ['assets/styles/main.min.css', '*.html', 'assets/scripts/main.min.js']
+      },
+      options: {
+        watchTask: true,
+        server: {
+          directory: true,
+          baseDir: "./"
+        }, port: 9000
       }
     },
 
@@ -157,9 +159,9 @@ module.exports = function (grunt) {
       dynamic: {
         files: [{
           expand: true,
-          cwd: 'source/',
+          cwd: 'assets/images/',
           src: ['**/*.{png,jpg,gif,svg}'],
-          dest: 'source/'
+          dest: 'assets/images/'
         }]
       }
     },
@@ -170,24 +172,18 @@ module.exports = function (grunt) {
         tasks: ['browserify:dev']
       },
       sass: {
-        files: ['source/*.sass', 'source/**/*.sass'],
+        files: ['source/**/*.sass'],
         tasks: ['sass:dev', 'postcss:dev'],
         options: {
           spawn: false
         }
       },
       pug: {
-        files: ['source/*.pug', 'source/**/*.pug'],
+        files: ['source/**/*.pug'],
         tasks: ['pug:compile'],
         options: {
           spawn: false,
           pretty: true
-        }
-      },
-      reload: {
-        files: ['source/**/src/*', '*.html', 'scripts/*', 'css/*'],
-        options: {
-          livereload: true
         }
       }
     },
@@ -196,7 +192,7 @@ module.exports = function (grunt) {
         logConcurrentOutput: true
       },
       dev: {
-        tasks: ['watch:scripts', 'watch:sass', 'watch:pug', 'watch:reload', 'connect']
+        tasks: ['watch:scripts', 'watch:sass', 'watch:pug']
       },
       prod: {
         tasks: ['watch:scripts', 'watch:sass']
@@ -210,7 +206,7 @@ module.exports = function (grunt) {
     }
   });
 
-  grunt.registerTask('dev', ['concurrent:dev']);
+  grunt.registerTask('dev', ['browserSync', 'concurrent:dev']);
   grunt.registerTask('prod', ['concurrent:prod']);
   grunt.registerTask('build', ['concurrent:build']);
   grunt.registerTask('optimal', ['concurrent:optimal']);

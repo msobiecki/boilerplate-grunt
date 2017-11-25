@@ -1,0 +1,26 @@
+doctype html
+html( lang="pl")
+
+  head
+    title Szablon
+
+    meta(charset='utf-8')
+    meta(name='title', content='Szablon')
+    meta(name='description', content='Szablon opis')
+    meta(name='keywords', content='Szablon keywords')
+    meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1')
+
+    include common/favicon/favicon
+
+    link(rel='stylesheet', href='assets/styles/main.min.css')
+
+  body
+    include common/header/header
+
+    include common/loader/loader
+
+    block content
+
+    include common/footer/footer
+
+    script(src='assets/scripts/main.min.js')
