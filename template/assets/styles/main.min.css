@@ -1,5 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800&amp;subset=latin-ext");
-@import url("https://fonts.googleapis.com/css?family=Montserrat:700&amp;subset=latin-ext");
+@import url("https://fonts.googleapis.com/css?family=Teko:300,400,500,700&amp;subset=latin-ext");
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -49,10 +48,20 @@ table {
 }
 
 body {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Teko", sans-serif;
   font-size: 14px;
-  font-size: 1.4rem;
+  font-size: parse-int(14px)/10rem;
+  font-weight: 400;
   line-height: 1.2;
+}
+
+@keyframes bannerZoom {
+  0% {
+    transform: scale(1, 1);
+  }
+  100% {
+    transform: scale(1.1, 1.1);
+  }
 }
 
 * {
@@ -71,6 +80,101 @@ html {
 
 body {
   min-width: 320px;
+}
+
+.cmsContainer {
+  display: block;
+  width: 100%;
+  padding: 0 5px;
+}
+
+.cmsContainer p {
+  font-size: 18px;
+  font-weight: 300;
+}
+
+@media (max-width: 767px) {
+  .cmsContainer p {
+    font-size: 16px;
+  }
+}
+
+.cmsContainer strong, .cmsContainer b {
+  font-weight: 700;
+}
+
+.cmsContainer em, .cmsContainer i {
+  font-style: italic;
+}
+
+.cmsContainer u, .cmsContainer ins {
+  text-decoration: underline;
+}
+
+.cmsContainer small {
+  font-size: smaller;
+}
+
+.cmsContainer mark {
+  background-color: #ff0;
+  color: inherit;
+}
+
+.cmsContainer del {
+  text-decoration: line-through;
+}
+
+.cmsContainer sub {
+  font-size: smaller;
+  vertical-align: sub;
+}
+
+.cmsContainer sup {
+  font-size: smaller;
+  vertical-align: super;
+}
+
+.cmsContainer ul {
+  display: block;
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+.cmsContainer ol {
+  display: block;
+  list-style-type: decimal;
+  padding-left: 20px;
+}
+
+.cmsContainer li {
+  display: list-item;
+  text-align: match-parent;
+}
+
+.cmsContainer table {
+  display: table;
+  width: 100%;
+  border-color: #3c3c3c;
+  color: #3c3c3c;
+  border-collapse: collapse;
+  border-spacing: 2px;
+}
+
+.cmsContainer tr {
+  display: table-row;
+  border-color: inherit;
+  background-color: #fff;
+  vertical-align: inherit;
+}
+
+.cmsContainer tr:nth-child(even) {
+  background-color: #d8d8d8;
+}
+
+.cmsContainer td, .cmsContainer th {
+  padding: 8px;
+  border: 1px solid #3c3c3c;
+  text-align: left;
 }
 
 .loader {

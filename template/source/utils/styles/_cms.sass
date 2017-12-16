@@ -3,4 +3,82 @@
   width: 100%
   padding: 0 5px
 
+  //HTML Text 
+  p
+    font-size: 18px
+    font-weight: 300
+
+    +max(767px)
+      font-size: 16px
+
+  //HTML Text Formatting Elements
+  strong, b
+    font-weight: 700
+
+  em, i
+    font-style: italic
+
+  u, ins
+    text-decoration: underline
+
+  small
+    font-size: smaller
+
+  mark
+    background-color: $yellow
+    color: inherit
+
+  del
+    text-decoration: line-through
+
+  sub
+    font-size: smaller
+    vertical-align: sub
+
+  sup
+    font-size: smaller
+    vertical-align: super
+
+  //HTML Lists
+  ul
+    display: block
+    list-style-type: disc
+    padding-left: 20px
+
+  ol
+    display: block;
+    list-style-type: decimal
+    padding-left: 20px
+
+  li
+    display: list-item
+    text-align: match-parent
+
+  //HTML Tables
+  table
+    display: table
+    width: 100%
+    border-color: $mine-shaft
+    color: $mine-shaft
+    border-collapse: collapse
+    border-spacing: 2px
+
+  tr
+    display: table-row
+    border-color: inherit
+    background-color: $white
+    vertical-align: inherit
+
+    &:nth-child(even)
+      background-color: $alto
+
+  td, th
+    padding: 8px
+    border: 1px solid $mine-shaft
+    text-align: left
+
+
   //- TODO: Napisac od nowa bo czesto jest z tym problem
+
+.cmsContainer
+  +cms

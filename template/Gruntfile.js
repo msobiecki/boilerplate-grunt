@@ -10,9 +10,9 @@ module.exports = function (grunt) {
           'assets/scripts/main.min.js': 'assets/scripts/main.min.js'
         },
         output: {
-          comments: false
-        }
-      }
+          comments: false,
+        },
+      },
     },
     browserify: {
       dev: {
@@ -22,13 +22,13 @@ module.exports = function (grunt) {
         options: {
           transform: [
             ['babelify', {
-              presets: "env"
-            }]
+              presets: 'env',
+            }],
           ],
           browserifyOptions: {
-            debug: true
-          }
-        }
+            debug: true,
+          },
+        },
       },
       dist: {
         files: {
@@ -37,14 +37,14 @@ module.exports = function (grunt) {
         options: {
           transform: [
             ['babelify', {
-              presets: "env"
-            }]
+              presets: 'env',
+            }],
           ],
           browserifyOptions: {
-            debug: false
-          }
-        }
-      }
+            debug: false,
+          },
+        },
+      },
     },
 
     mocha: {
@@ -58,9 +58,9 @@ module.exports = function (grunt) {
         clearCacheFilter: (key) => true,
         noFail: false,
         ui: 'tdd',
-        require: 'babel-register'
+        require: 'babel-register',
       },
-      src: ['test/**/*.html']
+      src: ['test/**/*.html'],
     },
 
     sass: {
@@ -68,29 +68,31 @@ module.exports = function (grunt) {
         options: {
           outputStyle: 'compressed',
           lineNumbers: false,
-          sourceMap: false
+          sourceMap: false,
+          includePaths: ['node_modules'],
         },
         files: [{
           expand: true,
           cwd: 'source',
           src: ['*.sass'],
           dest: 'assets/styles',
-          ext: '.css'
-        }]
+          ext: '.css',
+        }],
       },
       dev: {
         options: {
           outputStyle: 'expanded',
           lineNumbers: true,
-          sourceMap: true
+          sourceMap: true,
+          includePaths: ['node_modules'],
         },
         files: [{
           expand: true,
           cwd: 'source',
           src: ['*.sass'],
           dest: 'assets/styles',
-          ext: '.min.css'
-        }]
+          ext: '.min.css',
+        }],
       },
     },
     postcss: {
@@ -99,29 +101,29 @@ module.exports = function (grunt) {
           map: true,
           processors: [
             require('autoprefixer')({
-              browsers: ['last 2 version']
-            })
-          ]
+              browsers: ['last 2 version'],
+            }),
+          ],
         },
         dist: {
           src: 'assets/styles/main.min.css',
-          dest: 'assets/styles/main.min.css'
-        }
+          dest: 'assets/styles/main.min.css',
+        },
       },
       dist: {
         options: {
           map: false,
           processors: [
             require('autoprefixer')({
-              browsers: ['last 2 version']
-            })
-          ]
+              browsers: ['last 2 version'],
+            }),
+          ],
         },
         dist: {
           src: 'assets/styles/main.min.css',
-          dest: 'assets/styles/main.min.css'
-        }
-      }
+          dest: 'assets/styles/main.min.css',
+        },
+      },
     },
 
     pug: {
@@ -129,30 +131,30 @@ module.exports = function (grunt) {
         options: {
           pretty: true,
           data: {
-            debug: false
-          }
+            debug: false,
+          },
         },
         files: [{
           expand: true,
           cwd: 'source',
           src: ['*.pug', '!_*.pug'],
           dest: '',
-          ext: '.html'
-        }]
-      }
+          ext: '.html',
+        }],
+      },
     },
 
     browserSync: {
       bsFiles: {
-        src: ['assets/styles/main.min.css', '*.html', 'assets/scripts/main.min.js']
+        src: ['assets/styles/main.min.css', '*.html', 'assets/scripts/main.min.js'],
       },
       options: {
         watchTask: true,
         server: {
           directory: true,
-          baseDir: "./"
-        }, port: 9000
-      }
+          baseDir: "./",
+        }, port: 9000,
+      },
     },
 
     imagemin: {
@@ -161,49 +163,49 @@ module.exports = function (grunt) {
           expand: true,
           cwd: 'assets/images/',
           src: ['**/*.{png,jpg,gif,svg}'],
-          dest: 'assets/images/'
-        }]
-      }
+          dest: 'assets/images/',
+        }],
+      },
     },
 
     watch: {
       scripts: {
         files: ['source/**/*.js'],
-        tasks: ['browserify:dev']
+        tasks: ['browserify:dev'],
       },
       sass: {
         files: ['source/**/*.sass'],
         tasks: ['sass:dev', 'postcss:dev'],
         options: {
-          spawn: false
-        }
+          spawn: false,
+        },
       },
       pug: {
         files: ['source/**/*.pug'],
         tasks: ['pug:compile'],
         options: {
           spawn: false,
-          pretty: true
-        }
-      }
+          pretty: true,
+        },
+      },
     },
     concurrent: {
       options: {
-        logConcurrentOutput: true
+        logConcurrentOutput: true,
       },
       dev: {
-        tasks: ['watch:scripts', 'watch:sass', 'watch:pug']
+        tasks: ['watch:scripts', 'watch:sass', 'watch:pug'],
       },
       prod: {
-        tasks: ['watch:scripts', 'watch:sass']
+        tasks: ['watch:scripts', 'watch:sass'],
       },
       build: {
-        tasks: ['browserify:dist', 'uglify:dist', 'sass:dist', 'postcss:dist', 'concurrent:optimal']
+        tasks: ['browserify:dist', 'uglify:dist', 'sass:dist', 'postcss:dist', 'concurrent:optimal'],
       },
       optimal: {
-        tasks: ['imagemin']
-      }
-    }
+        tasks: ['imagemin'],
+      },
+    },
   });
 
   grunt.registerTask('dev', ['browserSync', 'concurrent:dev']);
